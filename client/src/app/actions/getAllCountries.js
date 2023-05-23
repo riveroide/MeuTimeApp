@@ -1,7 +1,7 @@
-import { setAllInfo } from "../reducers/infoSlice";
+import { setAllCountries } from "../reducers/countriesSlice";
 
 
-const getAllInfo = () => async (dispatch) => {
+const getAllCountries = () => async (dispatch) => {
     const res = await fetch("https://v3.football.api-sports.io/countries",{
         method: "GET",
         headers: {
@@ -9,9 +9,10 @@ const getAllInfo = () => async (dispatch) => {
             "x-rapidapi-host": "v3.football.api-sports.io"
     }})
     const data = await res.json();
-    dispatch(setAllInfo(data.response))
+    console.log(data, 'soy dat response')
+    dispatch(setAllCountries(data.response))
 
     
     }
 
-export default getAllInfo;
+export default getAllCountries;
