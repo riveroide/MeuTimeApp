@@ -8,7 +8,6 @@ const AllLeagues = () => {
   const { name } = useParams();
   const dispatch = useDispatch();
   const { allLeagues } = useSelector((state) => state.leagues);
-  console.log(allLeagues);
   const [searchTerm, setSearchTerm] = useState('');
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [leagueId, setLeagueId] = useState('');
@@ -22,7 +21,7 @@ const AllLeagues = () => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen bg-fbfield bg-cover justify-center">
+    <div className="flex flex-col min-h-screen bg-fbfield bg-fixed bg-cover justify-center">
       <div className="fixed top-16 w-full bg-black border-t-2">
         <div className="container mx-auto py-4 text-center">
           <h1 className="text-2xl text-white">
