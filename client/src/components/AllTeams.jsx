@@ -21,7 +21,7 @@ const AllTeams = () => {
     );
     return (
         <div className="flex flex-col min-h-screen bg-fbfield bg-fixed bg-cover justify-center">
-          <div className="fixed top-16 w-full bg-black border-t-2">
+          <div className="fixed top-16 w-full bg-black border-t-2 bg-opacity-90">
             <div className="container mx-auto py-4 text-center">
               <h1 className="text-2xl text-white">
                 Selecione uma time da lista ou escreva na barra de pesquisa

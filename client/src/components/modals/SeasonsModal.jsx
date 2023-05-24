@@ -22,7 +22,7 @@ const SeasonsModal = ({
         <div className="p-4">
           <h2 className="text-xl font-bold text-center">Temporadas da liga</h2>
           {/* Seasons List */}
-          <div className="grid grid-cols-2 gap-2 mt-4 ju">
+          <div className="grid grid-cols-2 gap-2 mt-4">
             {seasons[0]?.seasons.map((season, index) => (
               <Link to={`/${leagueId}/${season.year}`}>
                 <div
