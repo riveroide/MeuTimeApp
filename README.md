@@ -12,7 +12,7 @@ Para iniciar o projeto, você pode clonar o repositório e seguir as etapas abai
 4. Inicie o servidor com o comando `npm start`.
 
 ### Deploy
-Você também pode acessar o projeto deployed no seguinte link: [https://meu-time-app.vercel.app/](https://meu-time-app.vercel.app/)
+Você também pode acessar o deploy do projeto no seguinte link: [https://meu-time-app.vercel.app/](https://meu-time-app.vercel.app/)
 
 Espero que isso ajude! Se você tiver mais dúvidas, sinta-se à vontade para perguntar no email nicolasrivero1994@gmail.com
 
