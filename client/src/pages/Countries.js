@@ -1,10 +1,10 @@
 import React from 'react'
 import AllCountries from '../components/AllCountries'
 
-function Home() {
+function Countries({api}) {
   return (
-    <div><AllCountries/></div>
+    <div><AllCountries api={api}/></div>
   )
 }
 
-export default Home
+export default Countries

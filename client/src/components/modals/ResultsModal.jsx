@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const ResultsModal = ({openResults, setOpenResults}) => {
    const {teaminfo} = useSelector((state) => state.teams); 
- 
+  console.log(teaminfo)
    if(openResults){
   return (
     <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex flex-col justify-center items-center text-black">

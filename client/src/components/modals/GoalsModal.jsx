@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -21,7 +21,10 @@ const GoalsModal = ({openGoals, setOpenGoals}) => {
   const minutesArray = Object.keys(teaminfo?.goals?.for?.minute).slice(0, 6).map(key => {
     return teaminfo?.goals?.for?.minute[key]?.total;
   });
-console.log(minutesArray)
+  
+  
+console.log('graph',minutesArray)
+
 
   const data = {
     labels:['0-15','15-30','30-45','45-60','60-75','75-90'],

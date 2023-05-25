@@ -54,7 +54,7 @@ const AllTeams = () => {
           <div className="container mx-auto mt-60 lg:mt-52 sm:mt-52 min-h-full">
             <div className="flex flex-col gap-2 p-4 text-white">
               {filteredLeagues.map((info, index) => (
-               <Link to={`/${leagueId}/${seasonYear}/${info.team.id}`}>
+               <Link to={`/${leagueId}/${seasonYear}/${info.team.id}`} key={index}>
                   <div className="flex text-center h-12 justify-center"
                   >
                     <div className="flex justify-between items-center w-full sm:w-1/2 border-gray-300 border-2 p-4 rounded-xl bg-gray-950 bg-opacity-50 hover:bg-white hover:bg-opacity-10 duration-500">

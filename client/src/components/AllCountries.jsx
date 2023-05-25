@@ -1,20 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import getAllCountries from "../app/actions/getAllCountries";
 import { Link } from "react-router-dom";
 
-const AllCountries = () => {
+const AllCountries = ({api}) => {
   const dispatch = useDispatch();
   const { allCountries } = useSelector((state) => state.countries);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
+  console.log('apikey dentro de countries',api)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+    await dispatch(getAllCountries(api))
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+};
+fetchData()
+  }, [dispatch]);
+  
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
+
   const filteredCountries = allCountries.filter((info) =>
     info.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if(loading) return <h1>Loading...</h1>
 
   return (
     <div className="flex flex-col min-h-screen bg-fbfield bg-fixed bg-cover justify-center">
@@ -37,7 +57,7 @@ const AllCountries = () => {
             <button
               onClick={() => {
                 if (searchTerm === "") {
-                  dispatch(getAllCountries());
+                  dispatch(getAllCountries(apiKey));
                 }
                 setSearchTerm("");
               }}

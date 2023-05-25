@@ -10,21 +10,35 @@ const TeamInformation = () => {
   const dispatch = useDispatch();
   const { leagueId, seasonYear, teamId } = useParams();
   const { team } = useSelector((state) => state.teams);
+  const {teaminfo} = useSelector((state) => state.teams); 
   const [players, setPlayers] = useState([]);
   const [openFormation, setOpenFormation] = useState(false);
   const [openGoals, setOpenGoals] = useState(false);
   const [openResults, setOpenResults] = useState(false);
-
+  const [loading, setLoading] = useState(false);
+ console.log( teaminfo)
   useEffect(() => {
-    dispatch(getTeam(leagueId, seasonYear, teamId));
-    dispatch(getResults(leagueId, seasonYear, teamId));
-  }, [leagueId, seasonYear, teamId]);
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+    await dispatch(getTeam(leagueId, seasonYear, teamId));
+    await dispatch(getResults(leagueId, seasonYear, teamId))
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+};
+fetchData()
+  }, [dispatch]);
 
   useEffect(() => {
     if (team.length > 0) {
       setPlayers(team?.filter((e) => e.player));
     }
   }, [team]);
+
+if(loading) return <h1>Loading...</h1>
 
   return (
     <div className="flex flex-col min-h-screen bg-fbfield bg-fixed bg-cover justify-center">

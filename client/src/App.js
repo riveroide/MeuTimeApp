@@ -1,22 +1,25 @@
-import React from "react"
-import {Routes, Route} from "react-router-dom"
-import Countries from "./pages/Coutries"
-import NavBar from "./components/NavBar"
-import AllLeagues from "./components/AllLeagues"
-import Teams from "./pages/Teams"
-import TeamInfo from "./pages/TeamInfo"
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Countries from "./pages/Countries";
+import NavBar from "./components/NavBar";
+
+import Teams from "./pages/Teams";
+import TeamInfo from "./pages/TeamInfo";
+import Home from "./pages/Home";
+import Leagues from "./pages/Leagues";
+
 export default function App() {
+  const [api, setApi] = useState("");
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <Routes>
-      <Route path="/" element={<Countries/>} />
-      <Route path="/leagues/:name" element={<AllLeagues/>}/>
-      <Route path="/:leagueId/:seasonYear" element={<Teams/>}/>
-      <Route path="/:leagueId/:seasonYear/:teamId" element={<TeamInfo/>}/>
-    </Routes>
-      
+        <Route path="/" element={<Home setApi={setApi} />} />
+        <Route path="/countries" element={<Countries api={api}/>} />
+        <Route path="/leagues/:name" element={<Leagues api={api}/>} />
+        <Route path="/:leagueId/:seasonYear" element={<Teams api={api}/>} />
+        <Route path="/:leagueId/:seasonYear/:teamId" element={<TeamInfo api={api}/>} />
+      </Routes>
     </div>
-    
-  )
+  );
 }

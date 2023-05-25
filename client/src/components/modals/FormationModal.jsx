@@ -6,10 +6,10 @@ const FormationModal = ({ openFormation, setOpenFormation }) => {
   let mostUsedFormation = "";
   let maxPlayed = 0;
 
-  teaminfo?.lineups.forEach((lineup) => {
-    if (lineup.played > maxPlayed) {
-      mostUsedFormation = lineup.formation;
-      maxPlayed = lineup.played;
+  teaminfo?.lineups?.forEach((lineup) => {
+    if (lineup?.played > maxPlayed) {
+      mostUsedFormation = lineup?.formation;
+      maxPlayed = lineup?.played;
     }
   });
   console.log(mostUsedFormation)
