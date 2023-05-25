@@ -1,2 +1,18 @@
-# testeTecnicotradetechnologyltda
-[Teste Técnico para Trade Technology](https://tradetechnologyltda.sharepoint.com/sites/intranet/Gesto%20de%20Pessoas/Forms/AllItems.aspx?id=%2Fsites%2Fintranet%2FGesto%20de%20Pessoas%2FTestes%20T%C3%A9cnicos%2FCOGNITIVA%2FTeste%5Ftcnico%5Ffront%2Dend%2Epdf&parent=%2Fsites%2Fintranet%2FGesto%20de%20Pessoas%2FTestes%20T%C3%A9cnicos%2FCOGNITIVA&p=true&ga=1)
+# Teste Técnico - Trade Technology Ltda
+
+## Descrição
+Este é um projeto de teste técnico para a Trade Technology Ltda.
+
+## Inicialização do Projeto
+Para iniciar o projeto, você pode clonar o repositório e seguir as etapas abaixo:
+
+1. Abra o terminal.
+2. Navegue até a pasta "client" usando o comando `cd client`.
+3. Instale as dependências do projeto executando o comando `npm install`.
+4. Inicie o servidor com o comando `npm start`.
+
+### Deploy
+Você também pode acessar o projeto deployed no seguinte link: [https://meu-time-app.vercel.app/](https://meu-time-app.vercel.app/)
+
+Espero que isso ajude! Se você tiver mais dúvidas, sinta-se à vontade para perguntar no email nicolasrivero1994@gmail.com
+
