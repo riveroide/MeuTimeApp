@@ -12,7 +12,7 @@ export default function App() {
   const [api, setApi] = useState("");
   return (
     <div>
-      <NavBar />
+      <NavBar api={api} setApi={setApi} />
       <Routes>
         <Route path="/" element={<Home setApi={setApi} />} />
         <Route path="/countries" element={<Countries api={api}/>} />

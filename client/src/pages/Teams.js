@@ -1,9 +1,9 @@
 import React from 'react'
 import AllTeams from '../components/AllTeams'
 
-function Teams() {
+function Teams({api}) {
   return (
-    <div><AllTeams/></div>
+    <div><AllTeams api={api}/></div>
   )
 }
 

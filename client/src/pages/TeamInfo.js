@@ -1,9 +1,9 @@
 import React from 'react'
 import TeamInformation from '../components/TeamInformation'
 
-function TeamInfo() {
+function TeamInfo({api}) {
   return (
-    <div><TeamInformation/></div>
+    <div><TeamInformation api={api}/></div>
   )
 }
 

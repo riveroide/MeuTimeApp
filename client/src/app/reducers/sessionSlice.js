@@ -3,11 +3,11 @@ import {createSlice} from '@reduxjs/toolkit'
 export const sessionSlice = createSlice({
     name: 'session',
     initialState: {
-        apiKeySession:[],
+        apiKeySession:false,
     },
     reducers: {
         setApiKey: (state, action) => {
-            state.apiKey = action.payload;
+            state.apiKeySession = action.payload;
         },
     
     }

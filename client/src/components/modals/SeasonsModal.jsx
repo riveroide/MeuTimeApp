@@ -8,7 +8,7 @@ const SeasonsModal = ({
   allLeagues,
 }) => {
   const [seasons, setSeasons] = useState([]);
-  console.log("seasons", seasons[0]);
+
 
   useEffect(() => {
     setSeasons(allLeagues.filter((info) => info.league.id === leagueId));
@@ -24,9 +24,8 @@ const SeasonsModal = ({
           {/* Seasons List */}
           <div className="grid grid-cols-2 gap-2 mt-4">
             {seasons[0]?.seasons.map((season, index) => (
-              <Link to={`/${leagueId}/${season.year}`}>
+              <Link to={`/${leagueId}/${season.year}`} key={index}>
                 <div
-                  key={index}
                   className="mb-2 border-2 p-2 rounded-xl text-center hover:bg-gray-400 hover:duration-500"
                 >
                   <p className="font-bold">{season.year}</p>

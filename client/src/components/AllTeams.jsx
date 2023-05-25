@@ -1,16 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { getAllTeams } from '../app/actions/getTeams';
 
-const AllTeams = () => {
+const AllTeams = ({api}) => {
     const dispatch = useDispatch();
     const {leagueId, seasonYear} = useParams();
-    
     const {allTeams} = useSelector((state) => state.teams);
-    console.log(allTeams)
     const [searchTerm, setSearchTerm] = useState('');
-    const [allTeamsMapped, setAllTeamsMapped] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+      console.log('useeffect')
+      const fetchData = async () => {
+        setLoading(true);
+        try {
+      await dispatch(getAllTeams(leagueId, seasonYear,api));
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchData()
+    }, []);
     
     const handleSearch = (e) => {
         setSearchTerm(e.target.value);
@@ -19,6 +32,20 @@ const AllTeams = () => {
       const filteredLeagues = allTeams?.filter((info) =>
       info.team.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    if(loading) return (
+      <div className="flex flex-col justify-center items-center h-screen bg-fbfield bg-fixed bg-cover ">
+        <div
+          className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status"
+        >
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Loading...
+          </span>
+        </div>
+      </div>
+    );
+
     return (
         <div className="flex flex-col min-h-screen bg-fbfield bg-fixed bg-cover justify-center">
           <div className="fixed top-16 w-full bg-black border-t-2 bg-opacity-90">
@@ -35,23 +62,11 @@ const AllTeams = () => {
                   className="p-2 border border-gray-300 rounded-xl w-full sm:w-2/4 md:w-1/3 lg:w-1/4 xl:w-1/5 text-center text-black"
                 />
               </div>
-              <div className="mt-2">
-                <button
-                  onClick={() => {
-                    if (searchTerm === '') {
-                      dispatch(getAllTeams(leagueId, seasonYear));
-                    }
-                    setSearchTerm('');
-                  }}
-                  className="border-black border-2 p-1 rounded-xl text-xs"
-                >
-                  Carregar de novo todas as ligas
-                </button>
-              </div>
+              
             </div>
           </div>
     
-          <div className="container mx-auto mt-60 lg:mt-52 sm:mt-52 min-h-full">
+          <div className="container mx-auto mt-52 lg:mt-48 sm:mt-52 min-h-full">
             <div className="flex flex-col gap-2 p-4 text-white">
               {filteredLeagues.map((info, index) => (
                <Link to={`/${leagueId}/${seasonYear}/${info.team.id}`} key={index}>

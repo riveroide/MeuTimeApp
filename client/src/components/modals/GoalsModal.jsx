@@ -18,7 +18,7 @@ ChartJS.register(
 const GoalsModal = ({openGoals, setOpenGoals}) => {
   const {teaminfo} = useSelector((state) => state.teams);
   console.log('teaminfo', teaminfo)
-  const minutesArray = Object.keys(teaminfo?.goals?.for?.minute).slice(0, 6).map(key => {
+  const minutesArray = Object.keys(teaminfo?.goals?.for?.minute ?? {}).slice(0, 6).map(key => {
     return teaminfo?.goals?.for?.minute[key]?.total;
   });
   
@@ -53,7 +53,7 @@ max:20,
   if(!openGoals) return null
   return (
       <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex flex-col justify-center items-center text-black">
-      <div className="flex flex-col w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 bg-gray-300 opacity-100 rounded-2xl">
+      <div className="flex flex-col w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/3 bg-gray-300 opacity-100 rounded-2xl p-4">
       <div>
       <h2 className="text-xl font-bold text-center">Gols Marcados</h2>
 

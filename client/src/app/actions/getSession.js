@@ -8,6 +8,14 @@ export const getSession = (apiKey) => async (dispatch) => {
         }
     })
     const data = await res.json();
-    console.log('datadentrodesession',data.response)
-    dispatch(setApiKey(data.response))
+    
+    console.log('datadentrodesession',data)
+
+    if(data.errors?.token){
+        await dispatch(setApiKey(false))
+    } else if(data.response.account){
+        await dispatch(setApiKey(true))
+    }
+    
+    
 }

@@ -22,7 +22,7 @@ const FormationModal = ({ openFormation, setOpenFormation }) => {
             Formação mais utilizada na temporada
           </h2>
           <div className="py-2">
-          {mostUsedFormation? <h1 className="text-xl text-center font-bold border-2 border-black p-2 mx-12 rounded-xl">{mostUsedFormation}</h1>: <h1>Não há dados suficientes para mostrar a formação mais utilizada</h1>}
+          {mostUsedFormation? <h1 className="text-xl text-center font-bold border-2 border-black p-2 mx-12 rounded-xl">{mostUsedFormation}</h1>: <h1 className="text-base text-center font-bold border-2 border-black p-2 mx-12 rounded-xl">Não há dados suficientes para mostrar a formação mais utilizada</h1>}
           </div>
           
         </div>

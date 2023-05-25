@@ -6,7 +6,7 @@ import ResultsModal from "./modals/ResultsModal";
 import GoalsModal from "./modals/GoalsModal";
 import FormationModal from "./modals/FormationModal";
 
-const TeamInformation = () => {
+const TeamInformation = ({api}) => {
   const dispatch = useDispatch();
   const { leagueId, seasonYear, teamId } = useParams();
   const { team } = useSelector((state) => state.teams);
@@ -18,11 +18,12 @@ const TeamInformation = () => {
   const [loading, setLoading] = useState(false);
  console.log( teaminfo)
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
-      setLoading(true);
+      
       try {
-    await dispatch(getTeam(leagueId, seasonYear, teamId));
-    await dispatch(getResults(leagueId, seasonYear, teamId))
+    await dispatch(getTeam(leagueId, seasonYear, teamId,api));
+    await dispatch(getResults(leagueId, seasonYear, teamId,api))
   } catch (error) {
     console.log(error);
   } finally {
@@ -38,7 +39,18 @@ fetchData()
     }
   }, [team]);
 
-if(loading) return <h1>Loading...</h1>
+  if(loading) return (
+    <div className="flex flex-col justify-center items-center h-screen bg-fbfield bg-fixed bg-cover ">
+      <div
+        className="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        role="status"
+      >
+        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+          Loading...
+        </span>
+      </div>
+    </div>
+  );
 
   return (
     <div className="flex flex-col min-h-screen bg-fbfield bg-fixed bg-cover justify-center">

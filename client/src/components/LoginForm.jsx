@@ -9,9 +9,26 @@ const LoginForm = ({ setApi }) => {
   const navigate = useNavigate();
   const [apiKey, setApiKey] = useState("");
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const { apiKeySession } = useSelector((state) => state.session);
-  console.log(apiKeySession);
-  useEffect(() => {}, []);
+
+ 
+  useEffect(() => {
+    if (submitted && apiKeySession) { 
+      setApi(apiKey);
+      navigate("/countries");
+    } else if (submitted) {
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "API Key inválida",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+      setLoading(false);
+      setApiKey("");
+    }
+  }, [apiKeySession, submitted, setApi, navigate]);
 
   const handleApiKeyChange = (event) => {
     setApiKey(event.target.value);
@@ -20,29 +37,8 @@ const LoginForm = ({ setApi }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
-    try {
-      await dispatch(getSession(apiKey));
-  
-      if (apiKeySession?.length === 0) {
-        Swal.fire({
-          position: "center",
-          icon: "error",
-          title: "API Key inválida",
-          showConfirmButton: false,
-          timer: 2000,
-        });
-        setApiKey("");
-      } else {
-        setApi(apiKey);
-        navigate("/countries");
-      }
-    } catch (error) {
-      console.log(error);
-      // Manejar el error de la petición si es necesario
-    }
-  
-    setLoading(false);
+    await dispatch(getSession(apiKey));
+    setSubmitted(true); 
   };
   
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import AllLeagues from '../components/AllLeagues'
 
-function Leagues() {
+function Leagues({api}) {
   return (
-    <div><AllLeagues/></div>
+    <div><AllLeagues api={api}/></div>
   )
 }
 
